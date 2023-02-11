@@ -1,0 +1,23 @@
+---
+import components from "virtual:contentful-components";
+
+interface Props {
+  type: string;
+  [prop: string]: unknown;
+}
+
+const toTitleCase = (str: string) => {
+  return str.replace(/(^|\s)\S/g, (c) => { return c.toUpperCase() });
+}
+
+const { type, ...props } = Astro.props;
+const key = toTitleCase(type);
+
+if (!(key in components)) {
+  throw new Error(`Component could not be found for "${key}". Please check you have created, imported and added to the components.`);
+}
+
+const Component = components[key];
+---
+
+<Component {...props} />
