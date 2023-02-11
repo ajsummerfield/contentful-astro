@@ -1,6 +1,6 @@
 # contentful-astro
 
-An integration inspired by Storyblok for astro for those using Contentful as their headless CMS and wish to map Content Models to their Astro components. I was trying to the Storyblok Astro integration that does this and absolutely loved it, so have built the same functionality for Contentful for those that use that platform.
+An integration inspired by Storyblok for astro for those using Contentful as their headless CMS and wish to map Content Models to their Astro components. I was trying out the Storyblok Astro integration that does this and absolutely loved it, so have built the same functionality for Contentful for those that use that platform.
 
 ## Installation
 
@@ -19,6 +19,8 @@ import contentful from "contentful-astro";
 export default defineConfig({
   integrations: [
     contentful({
+      space: 'SPACE_ID',
+      accessToken: 'ACCESS_TOKEN',
       components: {
         // add your components here
       },
@@ -29,9 +31,11 @@ export default defineConfig({
 
 ## How to set it up
 
+Add your Contentful `spaceId` and `accessToken` to the config.
+
 Hopefully you will have created a component for each Content Model you have in Contentful. This configuration allows you to effectively register all your components so that when Contentful is rendering your page it has them all available to use.
 
-Edit the config your added earlier to include each component by name and path (exlcuding the `src` part of the path):
+Edit the config you added earlier to include each component by name and path (exlcuding the `src` part of the path):
 
 ```javascript
 components: {
