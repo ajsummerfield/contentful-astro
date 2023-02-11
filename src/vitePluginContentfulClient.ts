@@ -1,4 +1,4 @@
-export function vitePluginContentfulClient() {
+export function vitePluginContentfulClient(space: string, accessToken: string) {
   const virtualModuleId = 'virtual:contentful-client';
   const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
@@ -11,7 +11,14 @@ export function vitePluginContentfulClient() {
     },
     async load(id: string) {
       if (id === resolvedVirtualModuleId) {
-        return ``;
+        return `
+          import contentful from "contentful";
+
+          export const contentfulClient = contentful.createClient({
+            space: "${space}",
+            accessToken: "${accessToken}"
+          });
+        `;
       }
     },
   };
