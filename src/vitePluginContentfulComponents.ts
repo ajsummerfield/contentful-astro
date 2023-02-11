@@ -5,7 +5,7 @@ export function vitePluginContentfulComponents(components?: object) {
   const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
   return {
-    name: 'vite-plugin-contentful',
+    name: 'vite-plugin-contentful-components',
     resolveId(id: string) {
       if (id === virtualModuleId) {
         return resolvedVirtualModuleId

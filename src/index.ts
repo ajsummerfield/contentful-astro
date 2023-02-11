@@ -1,5 +1,6 @@
 
 import type { AstroIntegration } from "astro";
+import { vitePluginContentfulClient } from "./vitePluginContentfulClient";
 import { vitePluginContentfulComponents } from "./vitePluginContentfulComponents";
 
 export type IntegrationOptions = {
@@ -14,6 +15,7 @@ export default function contentfulIntegration(options: IntegrationOptions): Astr
         updateConfig({
           vite: {
             plugins: [
+              vitePluginContentfulClient(),
               vitePluginContentfulComponents(options.components)
             ]
           },
