@@ -1,0 +1,42 @@
+{
+  "name": "contentful-astro",
+  "version": "1.0.0",
+  "description": "An Astro integration for the Contentful Headless CMS",
+  "main": "./dist/contentful-astro.js",
+  "module": "./dist/contentful-astro.mjs",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/contentful-astro.mjs",
+      "require": "./dist/contentful-astro.js"
+    },
+    "./ContentfulComponent.astro": "./dist/ContentfulComponent.astro"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "prepublishOnly": "npm run build && cp src/ContentfulComponent.astro ./dist"
+  },
+  "devDependencies": {
+    "@rollup/plugin-dynamic-import-vars": "^2.0.3",
+    "@types/node": "^18.13.0",
+    "astro": "^2.0.9",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vite-plugin-dts": "^1.7.2"
+  },
+  "keywords": [
+    "astro",
+    "contentful",
+    "astro-component"
+  ],
+  "author": "Andy Summerfield",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajsummerfield/contentful-astro/issues"
+  },
+  "homepage": "https://github.com/ajsummerfield/contentful-astro#readme"
+}
